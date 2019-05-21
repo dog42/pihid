@@ -38,8 +38,10 @@ p1="/etc/dhcpcd.conf"
 p2="/etc/dnsmasq.conf"
 [ -f $p1 ] && mv $p1 $p1.old
 [ -f $p2 ] && mv $p2 $p2.old
-echo "interface usb0\nstatic ip_address=192.168.66.1/24" | tee -a $p1
-echo "interface=usb0\ndhcp-range=192.168.66.20,192.168.66.100,255.255.255.0,12h" | tee -a $p2
+echo "interface usb0" | tee -a $p1
+echo "static ip_address=192.168.66.1/24" | tee -a $p1
+echo "interface=usb0" | tee -a $p2
+echo "dhcp-range=192.168.66.20,192.168.66.100,255.255.255.0,12h" | tee -a $p2
 
 # Reboot
 read -p "Reboot necessary. Perform now?" -n 1 -r
