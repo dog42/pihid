@@ -1,0 +1,10 @@
+[Unit]
+Description=Enable ETH
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/eth
+
+[Install]
+WantedBy=multi-user.target
