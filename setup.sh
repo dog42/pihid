@@ -41,7 +41,7 @@ p2="/etc/dnsmasq.conf"
 echo "interface usb0" | tee -a $p1
 echo "static ip_address=192.168.66.1/24" | tee -a $p1
 echo "interface=usb0" | tee -a $p2
-echo "dhcp-range=192.168.66.20,192.168.66.100,255.255.255.0,12h" | tee -a $p2
+echo "dhcp-range=192.168.66.66,192.168.66.66,255.255.255.0,12h" | tee -a $p2
 
 # Reboot
 read -p "Reboot necessary. Perform now?" -n 1 -r
