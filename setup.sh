@@ -7,10 +7,10 @@ if [[ $(id -u) -ne 0 ]] ; then echo "Please run as root" ; exit 1 ; fi
 apt-get install dnsmasq adb
 
 # Enable dwc2 on the Pi
-echo "dtoverlay=dwc2" | sudo tee -a /boot/config.txt
+echo "dtoverlay=dwc2" >> /boot/config.txt
 
 # Enable dwc2 initialisation
-echo "dwc2" | sudo tee -a /etc/modules
+echo "dwc2" >> /etc/modules
 
 # Install service
 cp hid.service /lib/systemd/system/
@@ -38,10 +38,10 @@ p1="/etc/dhcpcd.conf"
 p2="/etc/dnsmasq.conf"
 [ -f $p1 ] && cp $p1 $p1.old
 [ -f $p2 ] && cp $p2 $p2.old
-echo "interface usb0" | tee -a $p1
-echo "static ip_address=192.168.66.1/24" | tee -a $p1
-echo "interface=usb0" | tee -a $p2
-echo "dhcp-range=192.168.66.66,192.168.66.66,255.255.255.0,12h" | tee -a $p2
+echo "interface usb0" >> $p1
+echo "static ip_address=192.168.66.1/24" >> $p1
+echo "interface=usb0" >> $p2
+echo "dhcp-range=192.168.66.66,192.168.66.66,255.255.255.0,12h" >> $p2
 
 # Reboot
 read -p "Reboot necessary. Perform now?" -n 1 -r

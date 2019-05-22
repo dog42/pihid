@@ -1,20 +1,3 @@
-/* hid_gadget_test from https://github.com/pelya/android-keyboard-gadget/blob/master/hid-gadget-test/jni/hid-gadget-test.c
- *
- * Copyright 2013 Sergii Pylypenko
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *     http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 #include <pthread.h>
 #include <string.h>
 #include <stdio.h>
@@ -185,7 +168,7 @@ static struct options kval[] = {
 	{.opt = "paste",		.val = 0x7d},
 	{.opt = "find",			.val = 0x7e},
 	{.opt = "mute",			.val = 0x7f},
-	{.opt = "volume-up",	.val = 0x80}, // These are multimedia keys, they will not work on standard keyboard, they need a different USB descriptor
+	{.opt = "volume-up",	.val = 0x80},
 	{.opt = "volume-down",	.val = 0x81},
 	{.opt = NULL}
 };
@@ -376,11 +359,15 @@ int main(int argc, const char *argv[])
 	if (argc < 3) {
 		fprintf(stderr, "Usage: %s devname mouse|keyboard|joystick\n", argv[0]);
 		fprintf(stderr, "e.g. send 'B':\n\techo left-shift x | %s /dev/hidg0 keyboard\nor send string 'Foobar':\n\tfor C in 'left-shift f' o o b a r ; do echo \"$C\" ; sleep 0.1 ; done | %s /dev/hidg0 keyboard\n\n", argv[0], argv[0]);
-
+		fprintf(stderr, "Licensed under the Apache License, Version 2.0 (the 'License')\nCopyright 2013 Sergii Pylypenko");
 
 		print_options('k');
 		print_options('m');
 		print_options('j');
+
+		fprintf(stderr, "Usage: %s devname mouse|keyboard|joystick\n", argv[0]);
+		fprintf(stderr, "e.g. send 'B':\n\techo left-shift x | %s /dev/hidg0 keyboard\nor send string 'Foobar':\n\tfor C in 'left-shift f' o o b a r ; do echo \"$C\" ; sleep 0.1 ; done | %s /dev/hidg0 keyboard\n\n", argv[0], argv[0]);
+
 
 		return 1;
 	}
