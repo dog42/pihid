@@ -3,7 +3,7 @@
 # Unload HID
 echo "" > UDC
 sleep 1
-rm -v /sys/kernel/config/usb_gadget/g1/configs/c.1/hid.usb0
+rm -v /sys/kernel/config/usb_gadget/pihid/configs/pihidconf.1/hid.usb0
 sleep 1
 
 # Load ETH
